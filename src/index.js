@@ -62,7 +62,7 @@ app.post('/multiply',(req,res)=>{
     const response = {
             status: "success",
             message: "The product of given numbers",
-            difference: num1*num2
+            result: num1*num2
         }
     res.send(response);
 })
