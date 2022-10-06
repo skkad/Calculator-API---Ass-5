@@ -39,11 +39,23 @@ app.post('/add',(req,res)=>{
     //     }
     // }
     const response ={
-                        status: "success",
-                        message: "the sum of given two numbers",
-                        sum: num1+num2
-                    }
-    
+                status: "success",
+                message: "the sum of given two numbers",
+                sum: num1+num2
+            }
+    if(num1<-1000000 || num2<-1000000){
+        response.status = "error";
+        response.message = "Underflow";
+    }else if(num1>1000000 || num2>1000000){
+        response.status="error";
+        response.message = "Overflow";
+    }
+
+    if(isNaN(num1) || isNaN(num2)){
+        response.status = "error";
+        response.message = "Invalid data types";
+    }
+     
     res.send(response);
 })
 
@@ -53,6 +65,19 @@ app.post('/sub',(req,res)=>{
             status: "success",
             message: "the difference of given two numbers",
             difference: num1-num2
+        }
+
+        if(num1<-1000000 || num2<-1000000){
+            response.status = "error";
+            response.message = "Underflow";
+        }else if(num1>1000000 || num2>1000000){
+            response.status="error";
+            response.message = "Overflow";
+        }
+    
+        if(isNaN(num1) || isNaN(num2)){
+            response.status = "error";
+            response.message = "Invalid data types";
         }
     res.send(response);
 })
@@ -64,6 +89,20 @@ app.post('/multiply',(req,res)=>{
             message: "The product of given numbers",
             result: num1*num2
         }
+
+        if(num1<-1000000 || num2<-1000000){
+            response.status = "error";
+            response.message = "Underflow";
+        }else if(num1>1000000 || num2>1000000){
+            response.status="error";
+            response.message = "Overflow";
+        }
+    
+        if(isNaN(num1) || isNaN(num2)){
+            response.status = "error";
+            response.message = "Invalid data types";
+        }
+
     res.send(response);
 })
 
@@ -100,6 +139,23 @@ app.post('/divide',(req,res)=>{
                         message: "The division  of given two numbers",
                         result: num1/num2
                     }
+    if(num1<-1000000 || num2<-1000000){
+        response.status = "error";
+        response.message = "Underflow";
+    }else if(num1>1000000 || num2>1000000){
+        response.status="error";
+        response.message = "Overflow";
+    }
+                
+    if(isNaN(num1) || isNaN(num2)){
+        response.status = "error";
+        response.message = "Invalid data types";
+    }            
+    
+    if(num2 == 0){
+        response.status = "error";
+        response.message = "Cannot divide by zero";
+    }
     res.send(response);
 })
 
