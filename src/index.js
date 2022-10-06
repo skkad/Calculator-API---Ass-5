@@ -49,7 +49,7 @@ app.post('/add',(req,res)=>{
     }else if(num1>1000000 || num2>1000000){
         response.status="error";
         response.message = "Overflow";
-        response.sum = "Overflow";
+        response.sum = 0;
     }
 
     if(isNaN(num1) || isNaN(num2)){
@@ -139,7 +139,7 @@ app.post('/divide',(req,res)=>{
     const response = {
                         status: "success",
                         message: "The division  of given two numbers",
-                        result: Math.round(num1/num2);
+                        result: Math.round(num1/num2)
                     }
     if(num1<-1000000 || num2<-1000000){
         response.status = "error";
