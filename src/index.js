@@ -49,12 +49,15 @@ app.post('/add',(req,res)=>{
     }else if(num1>1000000 || num2>1000000){
         response.status="error";
         response.message = "Overflow";
-        response.sum = 0;
+        // response.sum = 0;
     }
 
     if(isNaN(num1) || isNaN(num2)){
         response.status = "error";
         response.message = "Invalid data types";
+    }
+    if((num1+num2)>1000000){
+        response.sum = "Overflow";
     }
      
     res.send(response);
@@ -97,12 +100,15 @@ app.post('/multiply',(req,res)=>{
         }else if(num1>1000000 || num2>1000000){
             response.status="error";
             response.message = "Overflow";
-            response.result = "Overflow";
+            // response.result = "Overflow";
         }
     
         if(isNaN(num1) || isNaN(num2)){
             response.status = "error";
             response.message = "Invalid data types";
+        }
+        if((num1*num2)>1000000){
+            response.result = "Overflow";
         }
 
     res.send(response);
